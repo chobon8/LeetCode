@@ -1,3 +1,4 @@
+using System.Collections;
 /*
  * @lc app=leetcode.cn id=18 lang=csharp
  *
@@ -37,7 +38,8 @@
 // @lc code=start
 public class Solution {
     public IList<IList<int>> FourSum(int[] nums, int target) {
-
+        Hashtable table = new Hashtable();
+        
     }
 }
 // @lc code=end
