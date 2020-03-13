@@ -9,7 +9,7 @@ public class Solution {
     public IList<IList<int>> ThreeSum(int[] nums) {
         List<IList<int>> result = new List<IList<int>>();
         Array.Sort(nums);
-        int l,r;
+        int l,r,sum;
         for (int i = 0; i < nums.Length; i++)
         {
             if(nums[i] > 0)
@@ -20,24 +20,24 @@ public class Solution {
             r = nums.Length - 1;
             while (l < r)
             {
-                int sum = nums[i] + nums[l] + nums[r];
+                sum = nums[i] + nums[l] + nums[r];
                 if (sum > 0)
                 {
+                    while (l<r && nums[r] == nums[r-1]) r--;
                     r--;
                 }
                 else if (sum < 0)
                 {
+                    while (l<r && nums[l] == nums[l+1]) l++;
                     l++;
                 }
                 else
                 {
                     result.Add(new List<int> { nums[i], nums[l], nums[r] });
-                    r--;
-                    if(nums[r] == nums[r - 1])
-                    {
-                        r--;
-                    }
+                    while (l<r && nums[l] == nums[l+1]) l++;
+                    while (l<r && nums[r] == nums[r-1]) r--;
                     l++;
+                    r--;
                 }
             }
         }
