@@ -7,7 +7,7 @@
 // @lc code=start
 public class Solution {
     public int LengthOfLongestSubstring(string s) {
-        int[] index = new int[64];
+        int[] index = new int[128];
         int max = 0;
         int left = 0;
         for(int right = 0; right < s.Length; right++)
