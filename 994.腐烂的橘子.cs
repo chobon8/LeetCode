@@ -7,66 +7,56 @@
 // @lc code=start
 public class Solution {
     public int OrangesRotting(int[][] grid) {
-        Dictionary<string, int> dict = new Dictionary<string, int>();
-
+        List<int> decayNew = new List<int>();
+        int R = grid.Length;
+        int C = grid[0].Length;
         int minute = 0;
 
-        for (int i = 0; i < grid.Length; i++)
+        int[] dr = {-1,0,1,0};
+        int[] dc = {0,-1,0,1};
+        
+
+        for (int r = 0; r < grid.Length; r++)
         {
-            for (int j = 0; j < grid[i].Length; j++)
+            for (int c = 0; c < grid[r].Length; c++)
             {
-                string key = $"{i},{j}";
-                dict[key] = grid[i][j];
+                if(grid[r][c] == 2)
+                {
+                    int key = r * C + c;
+                    decayNew.Add(key);
+                }
             }
         }
 
-        List<string> decayNew = dict.Where(x => x.Value == 2).Select(x => x.Key).ToList();
-
-        while (dict.ContainsValue(1))
+        while (decayNew.Any())
         {
-            minute++;
-            if (decayNew.Count == 0)
-            {
-                return -1;
-            }
-
-            var decays = new List<string>(decayNew);
+            var decays = new List<int>(decayNew);
 
             decayNew.Clear();
 
             foreach (var decay in decays)
             {
-                string[] site = decay.Split(',');
-                int i = int.Parse(site[0]);
-                int j = int.Parse(site[1]) ;
-                string up = $"{i},{j + 1}";
-                string down = $"{i},{j - 1}";
-                string left = $"{i - 1},{j}";
-                string right = $"{i + 1},{j}";
-                if (dict.ContainsKey(up) && dict[up] == 1)
+                int r = decay / C;
+                int c = decay % C;
+                for(int i = 0; i < 4; i++)
                 {
-                    decayNew.Add(up);
-                }
-
-                if (dict.ContainsKey(down) && dict[down] == 1)
-                {
-                    decayNew.Add(down);
-                }
-
-                if (dict.ContainsKey(left) && dict[left] == 1)
-                {
-                    decayNew.Add(left);
-                }
-
-                if (dict.ContainsKey(right) && dict[right] == 1)
-                {
-                    decayNew.Add(right);
+                    int nr = r + dr[i];
+                    int nc = c + dc[i];
+                    if(nr >= 0 && nr < R && nc >=0 && nc < C && grid[nr][nc] == 1)
+                    {
+                        grid[nr][nc] = 2;
+                        int key = nr * C + nc;
+                        decayNew.Add(key); 
+                    }
                 }
             }
-
-            foreach (var decay in decayNew)
+            if(decayNew.Any()) minute++;
+        }
+        foreach(var row in grid)
+        {
+            foreach(var c in row)
             {
-                dict[decay] = 2;
+                if(c == 1) return -1;
             }
         }
 
