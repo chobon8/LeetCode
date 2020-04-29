@@ -5,4 +5,12 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Compile Include="..\..\1109.航班预订统计.cs" Link="Unknown\1109.航班预订统计.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Unknown\" />
+  </ItemGroup>
+
 </Project>
