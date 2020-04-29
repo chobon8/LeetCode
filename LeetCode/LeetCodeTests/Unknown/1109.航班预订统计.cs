@@ -9,14 +9,15 @@ namespace LeetCodeTests.Unknown
     public class UnknownTest : UnitTestBase
     {
         [Fact]
-        [AutoData]
         public void CorpFlightBookings()
         {
-            int[][] bookings = new [3][3]{[1, 2, 4],[1, 2, 4],[1, 2, 4],[1, 2, 4],[1, 2, 4]};
+            int n = 5;
+
+            int[][] bookings = {new[] { 1, 2, 10 }, new[] { 2, 3, 20 }, new[] { 2, 5, 25 }};
 
             var result = _solution.CorpFlightBookings(bookings, n);
 
-            Assert.
+            Assert.Equal(result,new []{ 10, 55, 45, 25, 25 });
         }
     }
 }
