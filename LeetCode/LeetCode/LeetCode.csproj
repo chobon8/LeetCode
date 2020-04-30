@@ -1,16 +1,19 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <OutputType>Exe</OutputType>
+    <OutputType>Library</OutputType>
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>
     <Compile Include="..\..\1109.航班预订统计.cs" Link="Unknown\1109.航班预订统计.cs" />
+    <Compile Include="..\..\242.有效的字母异位词.cs" Link="Hashtable\242.有效的字母异位词.cs" />
+    <Compile Include="..\..\49.字母异位词分组.cs" Link="Hashtable\49.字母异位词分组.cs" />
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="Unknown\" />
+    <Folder Include="Sort\" />
   </ItemGroup>
 
 </Project>

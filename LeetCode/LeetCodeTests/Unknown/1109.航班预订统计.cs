@@ -6,18 +6,16 @@ using Xunit;
 
 namespace LeetCodeTests.Unknown
 {
-    public class UnknownTest : UnitTestBase
+    public partial class UnknownTest
     {
-        [Fact]
-        public void CorpFlightBookings()
+        [Theory]
+        [InlineData(new[] { 10, 55, 45, 25, 25 } ,5 ,new[] { 1, 2, 10 }, new[]{ 2, 3, 20 },new []{ 2, 5, 25 })]
+        public void CorpFlightBookings(int[] assert, int n, params int[][] bookings)
         {
-            int n = 5;
-
-            int[][] bookings = {new[] { 1, 2, 10 }, new[] { 2, 3, 20 }, new[] { 2, 5, 25 }};
-
             var result = _solution.CorpFlightBookings(bookings, n);
 
-            Assert.Equal(result,new []{ 10, 55, 45, 25, 25 });
+            Assert.Equal(result, assert);
+
         }
     }
 }
