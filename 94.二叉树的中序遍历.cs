@@ -5,6 +5,10 @@
  */
 
 // @lc code=start
+
+using System.Collections.Generic;
+using LeetCode.Common;
+
 /**
  * Definition for a binary tree node.
  * public class TreeNode {
@@ -14,7 +18,7 @@
  *     public TreeNode(int x) { val = x; }
  * }
  */
-public class Solution {
+public partial class Solution {
     public IList<int> InorderTraversal(TreeNode root) {
         IList<int> result = new List<int>();
         if(root == null) return result;
@@ -22,7 +26,7 @@ public class Solution {
         return result;
     }
 
-    public void DFS(TreeNode node,IList<int> result)
+    private void DFS(TreeNode node,IList<int> result)
     {
         if (node.left != null)
         {

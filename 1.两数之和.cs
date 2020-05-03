@@ -5,7 +5,10 @@
  */
 
 // @lc code=start
-public class Solution {
+
+using System.Collections.Generic;
+
+public partial class Solution {
     public int[] TwoSum(int[] nums, int target) 
     {
         Dictionary<int,int> dict = new Dictionary<int,int>(); 
