@@ -8,6 +8,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 /**
  * Definition for a binary tree node.
@@ -27,45 +28,56 @@ public partial class Solution
 
     public IList<IList<int>> LevelOrder_DFS(TreeNode root)
     {
-        IList<IList<int>> result = new List<IList<int>>();
+        List<IList<int>> result = new List<IList<int>>();
 
         HashSet<TreeNode> visited = new HashSet<TreeNode>();
 
-        LevelOrderDFS(root, 0,(val,level) =>
+        LevelOrderDFS(root, 0, (node) => visited.Contains(node), (node, level) =>
         {
-            result[level].Add(val);
-        });
-        return result;
+            if (result.Count == level)
+            {
+                result.Add(new List<int>());
+            }
 
-    }
-
-    private void LevelOrderDFS(TreeNode node,int level, Action<int,int> action)
-    {
-
-        throw new NullReferenceException();
-    }
-
-    public IList<IList<int>> LevelOrder_BFS(TreeNode root)
-    {
-        IList<IList<int>> result = new List<IList<int>>();
-
-        HashSet<TreeNode> visited = new HashSet<TreeNode>();
-
-        LevelOrderBFS(root, 0, (node) => visited.Contains(node),(node, level) =>
-        {
             result[level].Add(node.val);
             visited.Add(node);
         });
 
         return result;
+
     }
 
-    private void LevelOrderBFS(TreeNode node, int level, Func<TreeNode, bool> isVisited, Action<TreeNode, int> action)
+    private void LevelOrderDFS(TreeNode node, int level, Func<TreeNode, bool> isVisited, Action<TreeNode, int> action)
     {
-        if (node == null) return;
-        action(node, 0);
-        LevelOrderBFS(node.left, level + 1, isVisited, action);
-        LevelOrderBFS(node.right, level + 1, isVisited, action);
+        if (node == null || isVisited(node)) return;
+        action(node, level);
+        LevelOrderDFS(node.left, level + 1, isVisited, action);
+        LevelOrderDFS(node.right, level + 1, isVisited, action);
+    }
+
+    public IList<IList<int>> LevelOrder_BFS(TreeNode root)
+    {
+        List<IList<int>> result = new List<IList<int>>();
+
+        List<TreeNode> queue = new List<TreeNode> {root};
+
+        while (queue.Any())
+        {
+            List<int> child = new List<int>();
+            List<TreeNode> nodes = new List<TreeNode>();
+            foreach (var node in queue)
+            {
+                child.Add(node.val);
+                if(node.left != null) 
+                    nodes.Add(node.left);
+                if(node.right != null) 
+                    nodes.Add(node.right);
+            }
+            result.Add(child);
+            queue = nodes;
+        }
+
+        return result;
     }
 }
 // @lc code=end
