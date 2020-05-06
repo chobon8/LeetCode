@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using LeetCode.Common;
 using Xunit;
 
 namespace LeetCodeTests.Tree
@@ -9,7 +8,7 @@ namespace LeetCodeTests.Tree
     public partial class TreeTest
     {
         [Theory]   
-        [MemberData(nameof(GetTreeNodeRoot))]
+        [MemberData(nameof(GetInorderTreeNodeRoot))]
         void InorderTraversal(TreeNode root,IList<int> assert)
         {
             var result = _solution.InorderTraversal(root);
@@ -18,25 +17,17 @@ namespace LeetCodeTests.Tree
         }
 
 
-        public static IEnumerable<object[]> GetTreeNodeRoot()
+        public static IEnumerable<object[]> GetInorderTreeNodeRoot()
         {
-            TreeNode v0 = new TreeNode(0);
-            TreeNode v1 = new TreeNode(1);
-            TreeNode v2 = new TreeNode(2);
-            TreeNode v3 = new TreeNode(3);
-            TreeNode v4 = new TreeNode(4);
-            TreeNode v5 = new TreeNode(5);
-            TreeNode v6 = new TreeNode(6);
-            TreeNode v7 = new TreeNode(7);
 
-            v1.right = v2;
-            v1.left = null;
-            v2.left = v3;
-            v2.right = null;
+            TreeNode.TreeV1.right = TreeNode.TreeV2;
+            TreeNode.TreeV1.left = null;
+            TreeNode.TreeV2.left = TreeNode.TreeV3;
+            TreeNode.TreeV2.right = null;
 
             var allData = new List<object[]>
             {
-                new object[] {v1, new List<int> {1, 3, 2}}
+                new object[] { TreeNode.TreeV1, new List<int> {1, 3, 2}}
             };
 
             return allData;

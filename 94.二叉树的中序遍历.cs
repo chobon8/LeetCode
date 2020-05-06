@@ -7,7 +7,6 @@
 // @lc code=start
 
 using System.Collections.Generic;
-using LeetCode.Common;
 
 /**
  * Definition for a binary tree node.
@@ -21,23 +20,24 @@ using LeetCode.Common;
 public partial class Solution {
     public IList<int> InorderTraversal(TreeNode root) {
         IList<int> result = new List<int>();
-        if(root == null) return result;
-        DFS(root, result);
+        InorderDFS(root, result);
         return result;
     }
 
-    private void DFS(TreeNode node,IList<int> result)
+    private void InorderDFS(TreeNode node,IList<int> result)
     {
+        if (node == null) return;
+
         if (node.left != null)
         {
-            DFS(node.left, result);
+            InorderDFS(node.left, result);
         }
 
         result.Add(node.val);
 
         if (node.right != null)
         {
-            DFS(node.right, result);
+            InorderDFS(node.right, result);
         }
     }
 }
