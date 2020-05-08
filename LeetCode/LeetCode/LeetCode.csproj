@@ -15,6 +15,7 @@
     <Compile Include="..\..\3.无重复字符的最长子串.cs" Link="SlidingWindow\3.无重复字符的最长子串.cs" />
     <Compile Include="..\..\433.最小基因变化.cs" Link="Unknown\433.最小基因变化.cs" />
     <Compile Include="..\..\49.字母异位词分组.cs" Link="Hashtable\49.字母异位词分组.cs" />
+    <Compile Include="..\..\515.在每个树行中找最大值.cs" Link="Tree\515.在每个树行中找最大值.cs" />
     <Compile Include="..\..\76.最小覆盖子串.cs" Link="SlidingWindow\76.最小覆盖子串.cs" />
     <Compile Include="..\..\94.二叉树的中序遍历.cs" Link="Tree\94.二叉树的中序遍历.cs" />
   </ItemGroup>
