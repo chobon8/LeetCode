@@ -67,47 +67,38 @@ public partial class Solution {
 
         HashSet<string> visited = new HashSet<string>();
 
-        int step = 0;
+        int step = int.MaxValue;
 
-        MinMutationDFS(start, end, gene=> visited.Contains(gene), gene =>
+        MinMutationDFS(start, 0, banks, visited, (gene, level) =>
         {
-            foreach (var bank in banks)
+            if (gene.Equals(end)) step = Math.Min(level, step);
+        });
+        return step == int.MaxValue ? -1 : step;
+    }
+
+    private void MinMutationDFS(string current, int step, HashSet<string> banks,HashSet<string> visited, Action<string,int> process)
+    {
+        if(visited.Contains(current)) return;
+
+        process(current, step);
+
+        foreach(var bank in banks)
+        {
+            int diff = 0;
+            for (int i = 0; i < bank.Length; i++)
             {
-                int diff = 0;
-                for (int i = 0; i < bank.Length; i++)
+                if (bank[i] != current[i])
                 {
-
-                    if (bank[i] != gene[i])
-                    {
-                        if(++diff > 1) break;
-                    }
-                    
-                }
-
-                if (diff == 1)
-                {
-                    if (bank == end)
-                    {
-                        return bank;
-                    }
-
-                    visited.Add(bank);
+                    if (++diff > 1) break;
                 }
             }
 
-            //step = 0;
-            return null;
-        });
-        return step == 0 ? -1 : step;
-    }
-
-    private void MinMutationDFS(string current,string end,Func<string,bool> isVisited,Func<string,string> process)
-    {
-        if (current == end || current == null) return;
-        current = process(current);
-        if (!isVisited(current))
-        {
-            MinMutationDFS(current, end, isVisited, process);
+            if (diff == 1)
+            {
+                visited.Add(current);
+                MinMutationDFS(bank, step + 1, banks, visited, process);
+                visited.Remove(current);
+            }
         }
     }
 }
