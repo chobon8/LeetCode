@@ -10,6 +10,7 @@
     <Compile Include="..\..\102.二叉树的层次遍历.cs" Link="Tree\102.二叉树的层次遍历.cs" />
     <Compile Include="..\..\1109.航班预订统计.cs" Link="Unknown\1109.航班预订统计.cs" />
     <Compile Include="..\..\144.二叉树的前序遍历.cs" Link="Tree\144.二叉树的前序遍历.cs" />
+    <Compile Include="..\..\22.括号生成.cs" Link="String\22.括号生成.cs" />
     <Compile Include="..\..\242.有效的字母异位词.cs" Link="Hashtable\242.有效的字母异位词.cs" />
     <Compile Include="..\..\3.无重复字符的最长子串.cs" Link="SlidingWindow\3.无重复字符的最长子串.cs" />
     <Compile Include="..\..\433.最小基因变化.cs" Link="Unknown\433.最小基因变化.cs" />
