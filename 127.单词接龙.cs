@@ -17,16 +17,44 @@ public partial class Solution {
 
     public int LadderLength_BFS(string beginWord, string endWord, IList<string> wordList)
     {
-        while (wordList.Any())
+        IList<string> queue = new List<string> {beginWord};
+
+        HashSet<string> visited = new HashSet<string>();
+
+        int step = 0;
+
+        while (queue.Any())
         {
-            foreach (var word in wordList)
+            step++;
+            IList<string> nodes = new List<string>();
+
+            foreach (var current in queue)
             {
-                foreach (var VARIABLE in word)
+                //wordList.Remove(current);
+                foreach (var word in wordList)
                 {
+                    if(visited.Contains(word)) continue;
+                    int diff = 0;
+                    for (int i = 0; i < word.Length; i++)
+                    {
+                        if (word[i] != current[i] && ++diff > 1) break;
+                    }
+
+                    if (diff == 1)
+                    {
+                        if (word.Equals(endWord)) return step + 1;
+                        nodes.Add(word);
+                        visited.Add(word);
+                    }
                     
                 }
+                
             }
+
+            queue = nodes;
         }
+
+        return 0;
     }
 }
 // @lc code=end
