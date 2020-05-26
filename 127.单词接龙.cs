@@ -7,6 +7,7 @@
 // @lc code=start
 
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 
 public partial class Solution {
@@ -17,45 +18,70 @@ public partial class Solution {
 
     public int LadderLength_BFS(string beginWord, string endWord, IList<string> wordList)
     {
-        IList<string> queue = new List<string> {beginWord};
+        if (!wordList.Contains(endWord)) return 0;
+
+        Queue<string> head = new Queue<string>();
+        Queue<string> tail = new Queue<string>();
+
+        head.Enqueue(beginWord);
+        tail.Enqueue(endWord);
+
+        HashSet<string> dict = new HashSet<string>(wordList);
 
         HashSet<string> visited = new HashSet<string>();
 
-        int step = 0;
+        int step = 1;
 
-        while (queue.Any())
+        while (head.Any() && tail.Any())
         {
-            step++;
-            IList<string> nodes = new List<string>();
+            Queue<string> temp = new Queue<string>();
 
-            foreach (var current in queue)
+            if (head.Count > tail.Count)
             {
-                //wordList.Remove(current);
-                foreach (var word in wordList)
-                {
-                    if(visited.Contains(word)) continue;
-                    int diff = 0;
-                    for (int i = 0; i < word.Length; i++)
-                    {
-                        if (word[i] != current[i] && ++diff > 1) break;
-                    }
-
-                    if (diff == 1)
-                    {
-                        if (word.Equals(endWord)) return step + 1;
-                        nodes.Add(word);
-                        visited.Add(word);
-                    }
-                    
-                }
-                
+                var queue = head;
+                head = tail;
+                tail = queue;
             }
 
-            queue = nodes;
+            foreach (var current in head)
+            {
+
+                char[] chs = current.ToCharArray();
+
+                for (int i = 0; i < current.Length; i++)
+                {
+                    char old = chs[i];
+                    for (int j = 0; j <= 26; j++)
+                    {
+                        char c = (char) (97 + j);
+
+                        if (old == c) continue;
+
+                        chs[i] = c;
+
+                        string target = string.Concat(chs);
+
+                        if (tail.Contains(target)) 
+                            return step + 1;
+
+                        if (!visited.Contains(target) && dict.Contains(target))
+                        {
+
+                            temp.Enqueue(target);
+                            visited.Add(target);
+                        }
+                    }
+                    chs[i] = old;
+                }
+            }
+
+            head = temp;
+            step++;
         }
 
         return 0;
     }
+
 }
 // @lc code=end
 
