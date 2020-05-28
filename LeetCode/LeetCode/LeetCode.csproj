@@ -21,6 +21,7 @@
     <Compile Include="..\..\51.n皇后.cs" Link="BackTracking\51.n皇后.cs" />
     <Compile Include="..\..\515.在每个树行中找最大值.cs" Link="Tree\515.在每个树行中找最大值.cs" />
     <Compile Include="..\..\62.不同路径.cs" Link="DynamicProgramming\62.不同路径.cs" />
+    <Compile Include="..\..\63.不同路径-ii.cs" Link="DynamicProgramming\63.不同路径-ii.cs" />
     <Compile Include="..\..\76.最小覆盖子串.cs" Link="SlidingWindow\76.最小覆盖子串.cs" />
     <Compile Include="..\..\94.二叉树的中序遍历.cs" Link="Tree\94.二叉树的中序遍历.cs" />
   </ItemGroup>
