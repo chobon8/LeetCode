@@ -13,7 +13,7 @@ namespace LeetCodeTests.BinarySearch
         [InlineData(2.00000, -2, 0.25000d)]
         void MyPow(double x, int n, double assert)
         {
-            var result = _solution.MyPow_BinarySearch(x, n);
+            var result = _solution.MyPow_BackTracking(x, n);
 
             Assert.Equal(result, assert,5);
         }
