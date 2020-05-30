@@ -5,17 +5,20 @@
  */
 
 // @lc code=start
-public class Solution {
-    public int MaxProfit(int[] prices) {
-        int minPrice = int.MaxValue;
-        int maxProfit = 0;
-        for (int i = 0; i < prices.Length; i++)
+public partial class Solution {
+    public int MaxProfitII(int[] prices)
+    {
+        return MaxProfitII_Greedy(prices);
+    }
+
+    public int MaxProfitII_Greedy(int[] prices)
+    {
+        int sum = 0;
+        for (int i = 1; i < prices.Length; i++)
         {
-            if (prices[i] < minPrice)
-                minPrice = prices[i];
-            maxProfit = Math.Max(maxProfit, prices[i] - minPrice);
+            if (prices[i] > prices[i - 1]) sum += prices[i] - prices[i - 1];
         }
-        return maxProfit;
+        return sum;
     }
 }
 // @lc code=end
