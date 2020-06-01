@@ -13,32 +13,24 @@ public partial class Solution {
 
     public int UniquePathsWithObstacles_DP(int[][] obstacleGrid)
     {
-        int[] paths = new int[obstacleGrid[0].Length];
-        System.Array.Fill(paths,1);
-        for (int i = 1; i <= obstacleGrid.Length; i++)
+        int width = obstacleGrid[0].Length;
+        int[] paths = new int[width];
+        paths[0] = 1;
+        foreach (var row in obstacleGrid)
         {
-            for (int j = 1; j <= obstacleGrid[^i].Length; j++)
+            for (int j = 0; j < width; j++)
             {
-                if (obstacleGrid[^i][^j] == 1)
+                if (row[j] == 1)
                 {
-                    paths[^j] = 0;
-                    continue;
+                    paths[j] = 0;
                 }
-
-                if (j == 1)
-                {
-                    continue;
-                }
-
-                if (i == 1)
-                    paths[^j] = paths[^(j - 1)];
-                else
-                    paths[^j] += paths[^(j - 1)];
+                else if(j > 0)
+                    paths[j] += paths[j - 1];
 
             }
         }
 
-        return paths[0];
+        return paths[width-1];
     }
 }
 // @lc code=end
