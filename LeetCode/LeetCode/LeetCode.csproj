@@ -14,6 +14,7 @@
     <Compile Include="..\..\123.买卖股票的最佳时机-iii.cs" Link="DynamicProgramming\123.买卖股票的最佳时机-iii.cs" />
     <Compile Include="..\..\127.单词接龙.cs" Link="BreadthFirstSearch\127.单词接龙.cs" />
     <Compile Include="..\..\144.二叉树的前序遍历.cs" Link="Tree\144.二叉树的前序遍历.cs" />
+    <Compile Include="..\..\188.买卖股票的最佳时机-iv.cs" Link="DynamicProgramming\188.买卖股票的最佳时机-iv.cs" />
     <Compile Include="..\..\22.括号生成.cs" Link="String\22.括号生成.cs" />
     <Compile Include="..\..\242.有效的字母异位词.cs" Link="Hashtable\242.有效的字母异位词.cs" />
     <Compile Include="..\..\3.无重复字符的最长子串.cs" Link="SlidingWindow\3.无重复字符的最长子串.cs" />
