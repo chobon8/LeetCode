@@ -11,6 +11,7 @@
     <Compile Include="..\..\1109.航班预订统计.cs" Link="Unknown\1109.航班预订统计.cs" />
     <Compile Include="..\..\121.买卖股票的最佳时机.cs" Link="DynamicProgramming\121.买卖股票的最佳时机.cs" />
     <Compile Include="..\..\122.买卖股票的最佳时机-ii.cs" Link="Greedy\122.买卖股票的最佳时机-ii.cs" />
+    <Compile Include="..\..\123.买卖股票的最佳时机-iii.cs" Link="DynamicProgramming\123.买卖股票的最佳时机-iii.cs" />
     <Compile Include="..\..\127.单词接龙.cs" Link="BreadthFirstSearch\127.单词接龙.cs" />
     <Compile Include="..\..\144.二叉树的前序遍历.cs" Link="Tree\144.二叉树的前序遍历.cs" />
     <Compile Include="..\..\22.括号生成.cs" Link="String\22.括号生成.cs" />
